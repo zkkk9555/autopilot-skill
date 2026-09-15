@@ -24,12 +24,9 @@ friction for the next upgrade without self-modifying: `references/usage-log.md`
 (driver never edits its own files). Version notes v10–v40 live verbatim
 in `CHANGELOG.md`; rule details live in `references/` (§0–§5 split files).
 
-**V2.016: round-boundaries (understand-vs-build split, heartbeat review object, stale-version self-check).**
-Same V2.015 behaviour (V2.014 rename carried over), plus: understanding rounds
-touch nothing, build nothing, count nothing — crossing into build needs a new
-round with a written transition; heartbeat review audits product freshness,
-not diffs; self-bootstrap starts by checking the installed skill version
-against the logbook watermark and re-reading on mismatch. Detail in
+
+**V2.017: evidence-discipline (receipt reconciliation, single benchmark source, ready-for-human tickets).**
+Same V2.016 behaviour, plus: subagent receipts are reconciled against disk+tests before acceptance (receipt ≠ evidence); new verification tools reuse the validated recipe instead of rewriting it; acceptance thresholds are calibrated from passing samples, never guessed; must-human acceptance stands as its own ready-for-human ticket; behaviour conclusions need a direct-vs-engine control experiment; realtime metrics are windowed, never full-run EMA. Detail in
 `references/`.
 
 ## Trigger table (one line per skill; fire at its moment, no human prompt)

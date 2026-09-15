@@ -102,3 +102,5 @@ is reserved for the STOP list only (destructive, externally visible, two
 irreversibles, or information no amount of tokens can find). Never trim
 verification, review, or research to save tokens.
 
+
+**ready-for-human 单独立票（V2.017）**：凡是必须真人动手的验收（真机联调、对方耳朵确认、试听三选一），必须写成唯一的 `ready-for-human` 票，不许淹没在"已交付"里。票 MUST 指向其 `NEEDS-HUMAN.md`；`resolved` 票内出现未完成的人工环节 = contradiction（与 v7 Status lifecycle 同罚）。机器侧全绿 + 人工票 open = "程序侧交付，待人验"，不许说"交付完成"。

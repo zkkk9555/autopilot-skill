@@ -57,3 +57,5 @@
   competitor PR exists. A closed old attempt is not "nobody is working on
   it". If an OPEN competitor exists, discuss in its thread first instead of
   opening a new PR.
+- Real-world对照优先（V2.017）: 行为结论必须有"直采 vs 引擎/工具"对照实验背书，再动代码。先对照，省一次误修（麦克风独占休眠经对照证明是 Windows 省电行为，非引擎 bug；8.16/quiet2 异常经查是测量口径问题，非漏杀）。对照做法：同一输入跑两条路（裸设备直采 vs 过引擎），差异归谁一目了然。
+- 指标必须加窗（V2.017）: 实时指标只看播放窗/动作窗内最佳，EMA 全程平均在启停场景下是错的（live_smoke 初版判据采全程 EMA，播放停后静音段把分拉爆）。窗的定义写进测试注释。
