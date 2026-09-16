@@ -7,7 +7,7 @@ single-window rule: diagnosis writes `NOTES.md` only until a fix is approved.
 Entry requires ≥1 of: user symptom text, repro path, location. Zero-info input
 never enters hypothesise — `NOTES.md` attempts + `BLOCKED.md` (needed
 log/save/steps) or `NEEDS-HUMAN.md`, then stop. Never self-invent a repro to
-satisfy Phase-1. Bugs never go through grill/spec first. Verify-only branch:
+satisfy Phase-1. Bugs never go through grill/spec first. （V2.018 加注：禁的只是"无 Phase-1 红就进 grill/spec 空聊"；Phase-1 红已建后，hypothesise 内用裸 `grilling` 打磨假设语句（3–5 可证伪假设排下一实验序，只烤语句不烤修法，结论记 `NOTES.md` + fix 票 Provenance）是硬门禁⑥，不算违禁。无复现/无红直接烤"怎么修/选A还是B" = 违禁。） Verify-only branch:
 when the fix already exists in the workspace (third-party / pre-sheltered),
 skip hypothesise/instrument and run morphology A/B (baseline RED vs workspace
 GREEN) + the repo's standard suite, then commit with the decision cited.

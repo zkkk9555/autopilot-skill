@@ -33,7 +33,7 @@ rewrite what a milestone claimed at its time — annotate current status beside
 it ("30 at M3; 31 now"). The present-tense pointers (README index, plan
 manifest, BALANCE) always state the CURRENT count.
 
-**Termination.** Grill ≤ 2 rounds; unconverged third round → `NEEDS-HUMAN.md`.
+**Termination (V2.018, quality-first: grill runs to frontier-empty).** Opening grill: soft cap 4 rounds, hard cap 6; converge = 空+稳+净 (frontier empty + one round with zero new decision points + every self-answer cited to file/issue/subagent report — uncited answers don't count as converged); divergence brake = frontier fails to shrink two rounds running → STOP with `NEEDS-HUMAN.md`; irreversible-list / numeric items never count as converged, HITL separately. Mid-lane micro-grills default 1–2 rounds, +1 on progress (see 中途 grill 专节 in core-triggers). Fact-finding subagents (research/prototype/Explore) run parallel, never consume grill rounds; `NEEDS-HUMAN` with no subagent/dispatch evidence = malformed.
 Per wayfinder ticket ≤ 2 resolve rounds; two consecutive unconverged tickets →
 whole effort STOP. Review blocks only on hard violations (red build, red-line
 breach, behaviour opposite the spec); smells are logged, not fixed in-lane.

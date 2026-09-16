@@ -16,7 +16,7 @@ is the fallback order if any is missing.
    threshold — subjective work like visual polish MUST have one or BLOCK);
    human-only call → grilling (HITL); manual groundwork → task. Subjective
    tickets without a threshold never collapse.
-2. **Resolve (one ticket per turn, frontier-first, ≤2 rounds each).** Claim
+2. **Resolve (one ticket per turn, frontier-first, ≤2 rounds each; V2.018: decision tickets resolve with bare `grilling` + `domain-modeling` consult — the mid-lane legal form, never `grill-me`/`grill-with-docs`; the 6 mid-lane hard gates apply inside resolve).** Claim
    (`Status: claimed`) before work; resolve with the Notes skill (default
    `grilling` + `domain-modeling`); record `## Answer`; mark resolved; append
    gist + pointer to the map. Graduate fog only when sharply statable; close +

@@ -134,4 +134,5 @@ shipped defect in the field:
   against three independent sources where available (contract comment /
   sibling code / spec section) and hand-computed once — never derived by
   running the buggy code (see §6 no-harness discipline).
+- **Grill-gate audit (V2.018).** Grep JOURNAL `Skills called` at each hard-gate trigger (prototype return / research return / spec-external new system / undecided seam / review-vs-spec / hypothesise ranking) for mid-lane `grilling`; trigger with no grill trace = malformed; mid-lane `grill-with-docs`/`grill-me` hit = malformed; soft-gate trigger with no one-line why = trace debt.
 

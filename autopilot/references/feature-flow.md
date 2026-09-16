@@ -4,7 +4,7 @@ Well-scoped feature or refactor that fits in one session. Prefer the installed
 `grill-with-docs`, `to-spec`, `implement`, `tdd`, `code-review` skills via the
 Skill tool; this file is the fallback order if any is missing.
 
-1. **Grill (self-answered, ≤2 rounds).** Work the design tree (whole frontier
+1. **Grill (self-answered, to frontier-empty: soft 4 / hard 6, V2.018).** Work the design tree (whole frontier
    per round), answering per the SKILL.md self-answer policy. Mandatory checks
    for value/content repos: red-line doc (numbers — breach means STOP, not
    ADR), single-source-of-truth (fix every copy, not just record), i18n +

@@ -25,8 +25,8 @@ friction for the next upgrade without self-modifying: `references/usage-log.md`
 in `CHANGELOG.md`; rule details live in `references/` (§0–§5 split files).
 
 
-**V2.017: evidence-discipline (receipt reconciliation, single benchmark source, ready-for-human tickets).**
-Same V2.016 behaviour, plus: subagent receipts are reconciled against disk+tests before acceptance (receipt ≠ evidence); new verification tools reuse the validated recipe instead of rewriting it; acceptance thresholds are calibrated from passing samples, never guessed; must-human acceptance stands as its own ready-for-human ticket; behaviour conclusions need a direct-vs-engine control experiment; realtime metrics are windowed, never full-run EMA. Detail in
+**V2.018: continuous-grilling (frontier-empty opening, six mid-lane hard gates, bare-grilling-only mid-lane).**
+Same V2.017 behaviour, plus: opening grill runs to frontier-empty (soft 4 / hard 6, 空稳净 convergence, divergence brake); six mid-lane moments must re-grill with bare `grilling` (prototype return, research return, spec-external discovery, undecided seam, review-vs-spec, hypothesise ranking) + two soft prompts; mid-lane `grill-with-docs`/`grill-me` = malformed; bug-flow ban annotated (hypothesise narrow-grill is hard gate). Detail in
 `references/`.
 
 ## Trigger table (one line per skill; fire at its moment, no human prompt)
@@ -34,7 +34,7 @@ Same V2.016 behaviour, plus: subagent receipts are reconciled against disk+tests
 - `ask-matt` — T0 lane routing that opens every round.
 - `grill-with-docs` — sharpen an idea inside a working directory.
 - `grill-me` — sharpen an idea with no working directory.
-- `grilling` — bare interview primitive, zero doc side-effects only.
+- `grilling` — bare interview primitive: opening zero-side-effect use + the ONLY legal mid-lane grill form (continuous-grilling, V2.018).
 - `research` — delegate outside-fact reading to a background agent.
 - `prototype` — answer a design question with throwaway runnable code.
 - `handoff` — bridge across harness, directory, or colleague boundary.
