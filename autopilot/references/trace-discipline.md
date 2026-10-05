@@ -14,15 +14,14 @@
 - Never mix lanes or slugs in one commit. Never invent vocabulary: reuse
   `GLOSSARY.md` terms; genuine gaps go to the spec Glossary →
   `domain-modeling`, not synonyms.
-- WORKFLOW-ACTIVE marker (V2.006/V2.007, V2.011 counter): at the first engineering round of a task,
+- WORKFLOW-ACTIVE marker (V2.006, V2.011 counter): at the first engineering round of a task,
   write `.scratch/WORKFLOW-ACTIVE.md` (one line: active slug(s) + start date
-  + driver version + `工程轮次: N` + `已反思 M 次`); when a prior task closed this session,
-  rebuild the marker with the carried count +1 and the carried reflection count
-  (both live in session context — the marker is deleted at every task close, so it is
-  rebuilt per task, never updated in place; count and reflection bit die and revive together);
+  + driver version + `工程轮次: N`); when a prior task closed this session,
+  rebuild the marker with the carried count +1
+  (the count lives in session context — the marker is deleted at every task close, so it is
+  rebuilt per task, never updated in place);
   delete it again when the task
-  closes (delivered/STOP/BLOCKED + logbook entry written). The count feeds
-  the V2.007 reflection trigger (`references/usage-log.md`). setup
+  closes (delivered/STOP/BLOCKED with the delivery-check triple handed over). setup
   (`setup-matt-pocock-skills`) adds one standing line to the project's
   AGENTS.md: 若 `.scratch/WORKFLOW-ACTIVE.md` 存在 → 先调 autopilot
   再继续；新任务开局拿不准走哪条路时 → 也先调它分流 — this is how a fresh window re-invokes the driver without the

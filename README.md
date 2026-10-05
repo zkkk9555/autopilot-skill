@@ -15,7 +15,6 @@
 - **自扫检查点**——每干完一段、每次红转绿、连续失败、设计分叉，都有 15 秒自扫。
 - **评审与验证永不豁免**——每次改动都贴真实退出码的验证证据；宁可多花 token，不让人参与。
 - **给不会写代码的人的交付**——每个任务收尾三件套：一句话改动说明 + 照着点就能验的手工清单 + 验证原文输出。
-- **中央日志本 + 定期反思**——每个任务往日志本追加一条证据记录；每 3 个工程轮 driver 自答五个升级问题。升级永远由人拿着日志开 skill-creator 出新版——driver 只提案，永不自改。
 
 ## 安装
 
@@ -54,7 +53,7 @@ Windows PowerShell（若报执行策略错误，先跑 `Set-ExecutionPolicy -Sco
 <details>
 <summary>进阶：其他装法（npx / 插件市场 / 手动）</summary>
 
-- `npx skills`（备选）：`npx skills@latest add zkkk9555/autopilot-skill -g -a zcode -y`（`-a` 换 claude-code|codex|cursor），再 `npx skills@latest add mattpocock/skills -g -a zcode --skill '*' -y` 装上游。注意它按 harness 分目录装且不建日志本，装完补一份日志本。
+- `npx skills`（备选）：`npx skills@latest add zkkk9555/autopilot-skill -g -a zcode -y`（`-a` 换 claude-code|codex|cursor），再 `npx skills@latest add mattpocock/skills -g -a zcode --skill '*' -y` 装上游。注意它按 harness 分目录装。
 - Claude Code 插件市场：`/plugin marketplace add zkkk9555/autopilot-skill` 后 `/plugin install autopilot`。
 - 手动（未知 harness）：找你的 skills 目录 → clone 两仓库 → `autopilot/` 拷过去，上游 `skills/*/*/` 按最后一级目录名装平 → 验证 26 个 → 重启说“切换按钮失效了，去检查修一下”。
 - 目录对照：`~/.agents/skills/`（ZCode/Cursor/OpenCode 等）|`~/.zcode/skills/`（ZCode）|`~/.claude/skills/`（Claude Code）|`~/.codex/skills/`（Codex）|`<项目>/.agents/skills/`（仅当前项目）。没有任何目录是全宇宙通用的，装完必须确认。
@@ -71,17 +70,10 @@ Windows PowerShell（若报执行策略错误，先跑 `Set-ExecutionPolicy -Sco
 
 driver 自己选路：报错/症状 → 先建反馈环再修的 bug 流；小功能 → 打磨 → spec → 红绿 → 双轴评审；大雾项目 → 先访谈画图、分阶段推进。只有删数据、花钱、对外发布这类高危动作才会停下来等你拍板。
 
-## 中央日志本
+## 公开版没有日志本
 
-每个任务收尾，driver 往一本中央日志追加一条证据记录（经过/为啥用/卡点/漏用自查/结果），日志本位置**由你在安装时自己定**——格式见 [`USAGE-LOG.example.md`](./USAGE-LOG.example.md)。每 3 个工程轮还会追加一条 `[反思]`。素材攒够后，你拿日志本开一轮 skill-creator 出下一个版本——这就是全部升级循环；driver 只提案，永不自改。
-
-## 升级出你自己的版本
-
-> 本 skill 自带一条完整的升级链：中央日志本 + 定期反思 + skill-creator 新版。
->
-> 用法：在你的项目里正常使用本 skill 一段时间，你的日志本里会攒下几十条真实记录（什么时候调了谁、哪里卡住、哪里该调没调）。把日志本拿出来，在本仓库的目录下开一轮 skill-creator（或你喜欢的 skill 编辑流程），按日志里的高频卡点出一版新规则——这就是 driver 作者本人的升级方式，它已跑过 V2.001 → V2.008。
->
-> 这样升级出来的版本天然适配你的代码库、你的工作习惯和你用的模型。日志本和 skill 包是分开的，升级时只改规则，不碰流水记录。
+中央日志本 + 定期反思 + skill-creator 升级链是作者私仓的进化机制，不在公开版提供。
+公开版 driver 把规则摩擦记在当轮 trace 里，不写日志、不升级。反馈走下面的 Issues / Pull Requests。
 
 ## 状态与贡献
 

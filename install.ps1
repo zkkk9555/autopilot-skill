@@ -5,8 +5,6 @@ param(
   [string]$Dir = '',
   [switch]$Slim,
   [switch]$WithUpstream,  # legacy alias: full install is the default
-  [string]$Logbook = '',
-  [switch]$NoLogbook,
   [switch]$DryRun,
   [switch]$Uninstall,
   [switch]$Yes
@@ -76,7 +74,6 @@ $Want = @('autopilot'); if (-not $Slim) { $Want += $UpstreamNames }
 
 if ($DryRun) {
   Write-Host "plan: targets: $($Targets -join ', ')"; Write-Host "plan: skills: $($Want -join ' ')"
-  Write-Host "plan: logbook: $(if ($NoLogbook) { 'skipped' } else { if ($Logbook) { $Logbook } elseif ($env:AUTOPILOT_LOGBOOK) { $env:AUTOPILOT_LOGBOOK } else { Join-Path $HOME '.autopilot\USAGE-LOG.md' } })"
   return
 }
 if ($Uninstall) {
@@ -85,7 +82,7 @@ if ($Uninstall) {
     if ($t -in @('/', $HOME, 'C:\')) { Write-Host "refusing dangerous target: $t"; return }
     foreach ($n in (@('autopilot') + $UpstreamNames)) { $p = Join-Path $t $n; if (Test-Path $p) { Remove-Item -Recurse -Force $p; Write-Host "removed $p" } }
   }
-  Write-Host 'kept logbook (uninstall never deletes it)'; return
+  return
 }
 
 $Tmp = Join-Path ([System.IO.Path]::GetTempPath()) ('autopilot-' + [Guid]::NewGuid().ToString('N'))
@@ -125,14 +122,6 @@ try {
     foreach ($n in $Want) { if (Test-Path "$t\$n\SKILL.md") { $have++ } else { $miss += $n } }
     if ($have -eq $Want.Count) { Write-Host "OK ${t}: required $have/$($Want.Count) SKILL.md (plus any new upstream extras)" }
     else { Write-Host "WARNING ${t}: only $have/$($Want.Count) (missing: $($miss -join ',')) — rerun full install" }
-  }
-  if (-not $NoLogbook) {
-    $Lb = if ($Logbook) { $Logbook } elseif ($env:AUTOPILOT_LOGBOOK) { $env:AUTOPILOT_LOGBOOK } else { Join-Path $HOME '.autopilot\USAGE-LOG.md' }
-    if (-not (Test-Path $Lb)) {
-      New-Item -ItemType Directory -Force -Path (Split-Path $Lb) | Out-Null
-      Set-Content -Path $Lb -Value "# autopilot 中央使用日志`r`n`r`n> 本本由安装脚本创建。规则：只追加、不改旧条；每次任务收尾追加一条；升级打水位线。格式见 USAGE-LOG.example.md。`r`n" -Encoding UTF8
-      Write-Host "==> Logbook created -> $Lb"
-    } else { Write-Host "==> Logbook kept -> $Lb" }
   }
   Write-Host ''; Write-Host '==> Done. Restart your agent and check the skill list shows autopilot,'
   Write-Host '    then say: "The sidebar toggle stopped working - check and fix it."'

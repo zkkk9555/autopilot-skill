@@ -19,9 +19,9 @@ it must leave behind: `references/core-triggers.md` (8 core skills with entry
 conditions + deliverables; the rest via the four-question template) — the
 table below only routes, that file decides.** How to hand over a done task to
 a non-coding user: `references/delivery-check.md` (plain-language summary +
-hand-check list + pasted verify output; no HTML dashboard). How to log
-friction for the next upgrade without self-modifying: `references/usage-log.md`
-(driver never edits its own files). Version notes v10–v40 live verbatim
+hand-check list + pasted verify output; no HTML dashboard). Rule friction is
+recorded as deviation notes in the round's trace (driver never edits its own
+files; this build ships no logbook or self-upgrade loop). Version notes v10–v40 live verbatim
 in `CHANGELOG.md`; rule details live in `references/` (§0–§5 split files).
 
 
@@ -66,17 +66,12 @@ above only routes; the pointed file decides.
 ## Cross-round resume (read files, not memory)
 
 1. Self-bootstrap first: on the first round of a session (or after any
-   compact/clear, or whenever unsure) check the installed skill version
-   (this file's version line) against the logbook's last `[水位线]` — on
-   mismatch, re-read this SKILL.md and the `references/` files it points at
-   (V2.016 stale-version self-check: old rules in context are worse than no
+   compact/clear, or whenever unsure) re-read this SKILL.md and the
+   `references/` files it points at (stale rules in context are worse than no
    rules); later rounds in the same session skip
    the re-read and rely on what is already in context. Then read the project
    convention tail, the last 5 JOURNAL entries, and the last 10 `calls.log`
-   lines before acting. Logbook discipline (V2.015): read the last
-   `[水位线]` entry plus at most the 3 entries after it — never the whole
-   logbook; the watermark tells you what was consumed, the tail tells you
-   what is new. A fresh window that was not invoked checks for
+   lines before acting. A fresh window that was not invoked checks for
    `.scratch/WORKFLOW-ACTIVE.md` via the standing AGENTS.md hook (see
    `references/trace-discipline.md`) and re-invokes this driver itself.
 2. Open the round with one `ask-matt` T0 call first (Skill-tool call order:

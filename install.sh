@@ -7,8 +7,8 @@
 #   curl -fsSL .../install.sh | bash -s -- --slim --dir /my/harness/skills
 # Flags: --harness auto|claude|codex|cursor|opencode|zcode|all  --dir PATH
 #        --slim (driver only)  --with-upstream (legacy alias, default is full)
-#        --logbook PATH | --no-logbook  --dry-run  --uninstall  --yes  -h|--help
-# Env: AUTOPILOT_SKILLS_DIR (alias: explicit --dir wins)  AUTOPILOT_LOGBOOK
+#        --dry-run  --uninstall  --yes  -h|--help
+# Env: AUTOPILOT_SKILLS_DIR (alias: explicit --dir wins)
 set -euo pipefail
 
 PUB_URL="https://github.com/zkkk9555/autopilot-skill"
@@ -16,15 +16,13 @@ UPSTREAM_URL="https://github.com/mattpocock/skills"
 # 25 upstream names, hardcoded manifest for count verification
 UPSTREAM_NAMES="ask-matt code-review codebase-design diagnosing-bugs domain-modeling grill-me grill-with-docs grilling handoff implement improve-codebase-architecture prototype research resolving-merge-conflicts setup-matt-pocock-skills tdd teach to-questionnaire to-spec to-tickets triage wait-what wayfinder wizard writing-for-agents"
 
-HARNESS="auto"; DIR=""; SLIM=0; LOGBOOK_ARG=""; NO_LOGBOOK=0; DRY=0; UNINST=0; YES=0
+HARNESS="auto"; DIR=""; SLIM=0; DRY=0; UNINST=0; YES=0
 while [ $# -gt 0 ]; do
   case "$1" in
     --harness) HARNESS="${2:-auto}"; shift 2;;
     --dir) DIR="${2:-}"; shift 2;;
     --slim) SLIM=1; shift;;
     --with-upstream) shift;; # legacy alias: full install is now the default
-    --logbook) LOGBOOK_ARG="${2:-}"; shift 2;;
-    --no-logbook) NO_LOGBOOK=1; shift;;
     --dry-run) DRY=1; shift;;
     --uninstall) UNINST=1; shift;;
     --yes) YES=1; shift;;
@@ -109,7 +107,6 @@ ALL_NAMES="autopilot $UPSTREAM_NAMES"
 if [ "$DRY" = 1 ]; then
   echo "plan: targets:$TARGETS"
   echo "plan: skills: $WANT"
-  echo "plan: logbook: $([ "$NO_LOGBOOK" = 1 ] && echo skipped || echo "${LOGBOOK_ARG:-$HOME/.autopilot/USAGE-LOG.md}")"
   exit 0
 fi
 
@@ -120,7 +117,7 @@ if [ "$UNINST" = 1 ]; then
     case "$t" in /|"$HOME") echo "refusing dangerous target: $t"; exit 1;; esac
     for n in $ALL_NAMES; do [ -e "$t/$n" ] && { rm -rf "$t/$n"; echo "removed $t/$n"; }; done
   done
-  echo "kept logbook (uninstall never deletes it)"; exit 0
+  exit 0
 fi
 
 fetch() { # url outfile: retry 3
@@ -162,15 +159,6 @@ for t in $TARGETS; do
     [ -f "$t/autopilot/SKILL.md" ] || fail=1
   fi
 done
-
-if [ "$NO_LOGBOOK" != 1 ]; then
-  LOGBOOK="${LOGBOOK_ARG:-${AUTOPILOT_LOGBOOK:-$HOME/.autopilot/USAGE-LOG.md}}"
-  if [ ! -f "$LOGBOOK" ]; then
-    mkdir -p "$(dirname "$LOGBOOK")"
-    { echo "# autopilot 中央使用日志"; echo ""; echo "> 本本由安装脚本创建（$(date -u +%Y-%m-%d)）。规则：只追加、不改旧条；每次任务收尾追加一条；升级打水位线。格式见 USAGE-LOG.example.md。"; echo ""; } > "$LOGBOOK"
-    echo "==> Logbook created -> $LOGBOOK"
-  else echo "==> Logbook kept -> $LOGBOOK"; fi
-fi
 
 echo; echo "==> Done. Restart your agent and check the skill list shows autopilot,"
 echo "    then say: \"The sidebar toggle stopped working — check and fix it.\""
