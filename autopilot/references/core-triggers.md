@@ -45,7 +45,7 @@ Lane E（raw pile）进 lane 前先走 triage 状态机，不是直接开干：
 - **ready-for-agent 必须附 brief**：光改标签不算 ready——brief 写清做什么、锚点、验收（见上游 AGENT-BRIEF.md 精神）。无 brief 的 ready = malformed。implement 只认"标签+brief 双全"的票。
 - **out-of-scope 目录**：拒绝过的 enhancement 写进 `.out-of-scope/`（一事一记），下次同类请求命中直接 wontfix，不重审。已实现的东西不进这个目录（那是 HIT，不是拒绝）。
 - **triage→diagnosing-bugs 衔接**：triage 出的 bug 票必须独立复现一遍——**不轻信 reporter 结论**（作者原话），复现步骤自己重做，复现证据进 brief。
-- **spec 审计定位（V2.012，作者"spec 用完"精神）**：spec 冻结为基线后不再改（V2.009 已有），审计只看 issues + CHANGELOG，不回看 spec——spec 是目的地文档，不是活档案。证据链不断（issues 全链 + 水位线日志），但 spec 本体封存。
+- **spec 审计定位（V2.012，作者"spec 用完"精神）**：spec 冻结为基线后不再改（V2.009 已有），审计只看 issues + CHANGELOG，不回看 spec——spec 是目的地文档，不是活档案。证据链不断（issues 全链），但 spec 本体封存。
 
 ## 纯理解任务：不进 lane（V2.005，不改仓，不建标记，不计工程轮）
 
