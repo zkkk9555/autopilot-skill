@@ -12,7 +12,7 @@
 - Publishing = writing `Status: ready-for-agent` into the issue file (a file
   line, not a commit attribute).
 - Never mix lanes or slugs in one commit. Never invent vocabulary: reuse
-  `CONTEXT.md` terms; genuine gaps go to the spec Glossary →
+  `GLOSSARY.md` terms; genuine gaps go to the spec Glossary →
   `domain-modeling`, not synonyms.
 - WORKFLOW-ACTIVE marker (V2.006/V2.007, V2.011 counter): at the first engineering round of a task,
   write `.scratch/WORKFLOW-ACTIVE.md` (one line: active slug(s) + start date

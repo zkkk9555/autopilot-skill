@@ -11,7 +11,7 @@ understand, spec, split, build, verify. Ask nothing mid-task unless the
 decision is destructive, externally visible, or changes scope. Everything else:
 pick the sensible default, record it, keep going.
 
-Sub-skills (25 total) are invoked via the Skill tool. If one is not installed,
+Sub-skills (27 total) are invoked via the Skill tool. If one is not installed,
 run the bundled fallback in `references/` and note the substitution in the
 trace. Naming, templates, and commit rules live in
 `references/conventions.md` — follow it. **When to fire which skill and what
@@ -25,8 +25,8 @@ friction for the next upgrade without self-modifying: `references/usage-log.md`
 in `CHANGELOG.md`; rule details live in `references/` (§0–§5 split files).
 
 
-**V2.020: trigger-audit (roll-call trace-check, file-state counting, evidence-vs-log landing).**
-Same V2.019 behaviour, plus: roll-call gains a closing trace-check (grep the JOURNAL `Skills called` line for each named skill, missing trace = deviation logged the same round); reflection counting is file-state (the WORKFLOW-ACTIVE marker), never session memory; landing rule in one line — evidence to the repo, log to the logbook. Detail in
+**V2.021: upstream-alignment (27 skills, GLOSSARY rename, 3-in-1-out routing).**
+Same V2.020 behaviour, plus: trigger table drops `resolving-merge-conflicts` and routes `implement-spec`/`pr`/`retro`; all live `CONTEXT.md` refs become `GLOSSARY.md` (archive blocks stay verbatim, superseded by this version); `disable-model-invocation` count re-audited 16/27. Detail in
 `references/`.
 
 ## Trigger table (one line per skill; fire at its moment, no human prompt)
@@ -41,8 +41,11 @@ Same V2.019 behaviour, plus: roll-call gains a closing trace-check (grep the JOU
 - `to-spec` — turn a sharpened idea into a buildable spec.
 - `to-tickets` — split a spec into blocked tracer-bullet tickets.
 - `implement` — build one ticket in fresh context.
+- `implement-spec` — multi-ticket frontier in parallel, one integration branch.
 - `tdd` — red-green one seam at a time inside implement.
 - `code-review` — two-axis Standards + Spec review before commit.
+- `pr` — PR body only: smallest visual + before/after evidence + door call.
+- `retro` — post-build environment retrospective, in-session before clear.
 - `diagnosing-bugs` — hard bug: Phase-1 tight loop first, then fix.
 - `wayfinder` — foggy multi-session effort: chart a decision map first.
 - `triage` — raw incoming pile; `to-tickets` output stays untriaged.
@@ -54,7 +57,6 @@ Same V2.019 behaviour, plus: roll-call gains a closing trace-check (grep the JOU
 - `to-questionnaire` — blocked on someone else's head; send questions.
 - `wait-what` — re-pitch a message that did not land, in plain words.
 - `wizard` — human-only wall: scope stages, then STOP with NEEDS-HUMAN.
-- `resolving-merge-conflicts` — mid-conflict only; resolve by intent.
 - `writing-for-agents` — author or evolve agent-consumed docs.
 
 Trigger detail (entry checklists, cadences, environment honesty) rides in

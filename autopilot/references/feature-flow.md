@@ -8,7 +8,7 @@ Skill tool; this file is the fallback order if any is missing.
    per round), answering per the SKILL.md self-answer policy. Mandatory checks
    for value/content repos: red-line doc (numbers — breach means STOP, not
    ADR), single-source-of-truth (fix every copy, not just record), i18n +
-   save-compat. New terms → spec Glossary (do NOT create `CONTEXT.md`
+   save-compat. New terms → spec Glossary (do NOT create `GLOSSARY.md`
    eagerly); hard-to-reverse calls → ADR, irreversible-list items → forced
    HITL grilling ticket instead of self-answer.
 2. **Spec.** Synthesise into `.scratch/<slug>/spec.md`: Problem / Solution /

@@ -92,4 +92,4 @@
 
 - driver **永远不改**自己的 `SKILL.md`、`references/`、`agents/`、`CHANGELOG.md`、`VERSION`。即使发现自己的触发条件写错了，也照当前规则把活干完，把想法写进 `.scratch/<slug>/DRIVER-PROPOSAL.md`（坏在哪 + 证据 + 建议改法），然后继续。
 - 自己改自己 = malformed（和 T0-only 一样，属于坏轮，要在 trace 里记 deviation）。
-- 全自动自进化不做：自己改触发器会悄悄改坏 25 个上游 skill 的零碰线、版本号乱掉、和 goal 模式的记忆打架。进化只走“中央日志 → 你拿回来 → skill-creator 出新版”这条路。
+- 全自动自进化不做：自己改触发器会悄悄改坏 27 个上游 skill 的零碰线、版本号乱掉、和 goal 模式的记忆打架。进化只走“中央日志 → 你拿回来 → skill-creator 出新版”这条路。

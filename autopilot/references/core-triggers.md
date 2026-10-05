@@ -2,7 +2,7 @@
 
 > SKILL.md 触发表只负责指路，这张表负责拍板。每个核心 skill 一条：入口条件（什么时候必须调）+ 产物约定（调完必须留下什么）+ 跳过即 malformed（什么情况下算漏调）。剩下的 17 个走文末四问模板，不要凭感觉。
 
-读法：先看入口条件，命中就调；调完对照产物约定，缺产物等于没调；明明命中却没调，JOURNAL 里要写 deviation + 下轮纠正。
+读法：先看入口条件，命中就调；调完对照产物约定，缺产物等于没调；明明命中却没调，JOURNAL 里要写 deviation + 下轮纠正。8 核心之外：新转正的 `implement-spec`/`pr`/`retro` 走下节专节，剩下的 19 个走文末四问模板，不要凭感觉。
 
 ## 8 core
 
@@ -16,14 +16,20 @@
 - **`diagnosing-bugs`** — 入口：有报错、有必现/偶现症状、有用户原话（症状文本本身就算一条，哪怕没给复现路径），有复现路径或出错位置更好，任中其一。产物：Phase-1 反馈环先行（同一命令在当前 bug 上变红、修完变绿，断言代码缝，不编用户操作路径）+ `NOTES.md` 诊断过程，见 `references/bug-flow.md`。不调即 malformed：没建反馈环就 theorising 修 bug；零信息指连症状都没有（比如光说"修一下那个 bug"），才写 `BLOCKED.md`/`NEEDS-HUMAN.md` 先要信息。
 - **`wayfinder`** — 入口：同时满足三条才进：(a) 现在写不出所有 ticket 的 Anchors+verify，(b) 决策链看不见（先画出来才知道先后），(c) 还没有指向这个目标的 map。产物：`map.md` + 决策票。well-scoped 的活（Lane B 现在就能写票）永不进，不调不算错，进错了（该 B 的画了 map）算浪费要在 trace 里记。
 
-## 剩下 17 个的四问模板
+## 执行形态与收尾：implement-spec / pr / retro（V2.021，上游转正跟进）
+
+- **`implement-spec`** — 入口：票图已成、frontier 有 ≥2 可并行、要落在单一集成分支（Lane C 执行轮）。产物：集成分支 + 每票按 tracker 规则关闭 + 集成后一次 `code-review`。单票/逐票亲驾仍走 `implement`（fresh context per ticket）。选错形态（该并行的逐票串行拖死、该单票的起重型集成）= deviation。编排：`implement-spec` 是 user-invoked，driver 可调；其内只许调 model-invoked（`tdd`、`code-review`），不许再调 user-invoked（见编排铁律）。
+- **`pr`** — 入口：要开 PR（含 `implement-spec` 的 draft PR）。产物：PR 正文按上游模板（最小可视化 + before/after 证据 + 单/双向门 + blast radius），用 `GLOSSARY.md` 词汇。PR 正文缺证据或缺门判断 = malformed。`pr` 是 model-invoked，任何上下文可调。
+- **`retro`** — 入口：一次构建收尾，尤其跑偏之后（P0/返工/整轮作废）。产物：环境候选（导航/检查/规范/steering/工具），按严重度摆给用户，不直接改代码。**与 driver 每 3 轮 `[反思]` 不同物**：`[反思]` 是 driver 写进中央本的过程观察；`retro` 是当轮环境复盘，结论给用户拍板。两者并存，不互相替代。跑法：本会话 clear 之前在当会话跑；clear 之后凭该会话日志回看。跑偏构建无复盘 = malformed。
+
+## 剩下 19 个的四问模板
 
 命中核心 8 个之外，先问四问再定：
 
 1. 有没有工作目录可留痕？没有 → `grill-me`（无目录打磨）或 `grilling`（还要零副作用、一次性、无 carry-over 才用 bare primitive）。本条只定开局路由；中途（已进 ticket/implement/resolve）一律裸 `grilling`，见中途 grill 专节（V2.018）。
 2. 要不要查外部事实？要 → `research` 丢给后台，继续手头活。
 3. 要不要跑个一次性验证？要 → `prototype`（网页看 UI/状态机看 LOGIC/引擎看 headless 数字时间线），`handoff` 双向摆渡。**入口放宽（V2.012）**：不只"两方案争执"，"how should it look / how should it behave 是关键问题"就跑——wayfinder 的 prototype 票种同理，关键问题需高保真答案时默认放一张 prototype 票。
-4. 是不是人墙/边界？发版花钱 credential 合规 → `wizard` 先 scope 后 STOP；跨目录/同事或版本级换 harness（见 handoff 版本交接包） → `handoff`；等别人脑子里的答案 → `to-questionnaire`（具名收件人 + 问题 + 回填钩子）；半路 conflict → `resolving-merge-conflicts`（`git status` 报 merging/rebasing 才进）；词含糊 → `domain-modeling`；两实现打架/缝错层 → `codebase-design`；闲时巡检 → `improve-codebase-architecture`（只建议不改，**产出 deepening 候选必须落 issue 等人拍板，不许 driver 自答拍板**——作者原话：人是 strategic programmer，agent 是 tactical）；第一次进仓 → `setup-matt-pocock-skills`（一次）；学东西 → `teach`；话没说明白 → `wait-what`；写 agent 文档 → `writing-for-agents`；一堆 raw 输入 → `triage`（见 triage 全套规则，永不 triage `to-tickets` 的输出）。
+4. 是不是人墙/边界？发版花钱 credential 合规 → `wizard` 先 scope 后 STOP；跨目录/同事或版本级换 harness（见 handoff 版本交接包） → `handoff`；等别人脑子里的答案 → `to-questionnaire`（具名收件人 + 问题 + 回填钩子）；词含糊 → `domain-modeling`；两实现打架/缝错层 → `codebase-design`；闲时巡检 → `improve-codebase-architecture`（只建议不改，**产出 deepening 候选必须落 issue 等人拍板，不许 driver 自答拍板**——作者原话：人是 strategic programmer，agent 是 tactical）；第一次进仓 → `setup-matt-pocock-skills`（一次）；学东西 → `teach`；话没说明白 → `wait-what`；写 agent 文档 → `writing-for-agents`；一堆 raw 输入 → `triage`（见 triage 全套规则，永不 triage `to-tickets` 的输出）。
 
 ## handoff 版本交接包：版本级换 harness（V2.013）
 
@@ -94,7 +100,7 @@ CodeRabbit/人类在 PR 上的意见：**先复现，有效才修，修完在 re
 
 ## 中途 grill 专节：continuous-grilling（V2.018，质量优先）
 
-开局之后全程可烤。中途只许裸 `grilling`（按需配 `domain-modeling` consult：只读词汇表定词，不跑 session、不写 `CONTEXT.md`）；中途调 `grill-with-docs`/`grill-me` = malformed（user-invoked 互调）。中途产物只写三处：ticket `## Answer` 增量（frontier 问答 ≤3 组 + 结论 ≤5 行）+ map 指针 + `NOTES.md`；ADR/spec/`CONTEXT.md` 落盘归外层统一做，内层直写 = malformed。审计口径：只扫 JOURNAL `Skills called` 行 + Skill 调用痕，不扫正文提及；开局首个 user-invoked 不计套娃。
+开局之后全程可烤。中途只许裸 `grilling`（按需配 `domain-modeling` consult：只读词汇表定词，不跑 session、不写 `GLOSSARY.md`）；中途调 `grill-with-docs`/`grill-me` = malformed（user-invoked 互调）。中途产物只写三处：ticket `## Answer` 增量（frontier 问答 ≤3 组 + 结论 ≤5 行）+ map 指针 + `NOTES.md`；ADR/spec/`GLOSSARY.md` 落盘归外层统一做，内层直写 = malformed。审计口径：只扫 JOURNAL `Skills called` 行 + Skill 调用痕，不扫正文提及；开局首个 user-invoked 不计套娃。
 
 **6 硬门禁（命中未调裸 `grilling` = malformed）**：①prototype 回来必回烤（手感/外观跑起来才知道 → 结论变决策，1–2 轮）；②research 回包必烤（外部事实落盘后"事实变决策"，与 spec 冲突处逐条裁决）；③Lane C resolve 挖出 spec 范围外的新系统/依赖/管线/成本/合规 → 先烤方向（还做不做/Destination 改不改/STOP 还是另起 map）再按结论走，禁直接 Collapse/Build；④tdd 吞缝前缝位未定（两实现打架/调用方知道太多/第二同形 adapter/跨 ≥3 文件）→ 先微烤接口形状与调用方知识，收敛再定 seam，consult codebase-design 在烤后；⑤code-review 报"行为与 spec 相反/红线 breach"→ 先回烤（改码还是改 spec），结论写进 ticket/NOTES 再修；⑥diagnosing-bugs hypothesise（Phase-1 红已建后）→ 必烤假设语句排序（3–5 可证伪假设排下一实验序，见 bug-flow 加注）。中途单点默认 1–2 轮，frontier 未空且有进展可加 1 轮；B-vs-D 拿不准允许先烤 1 轮分流判据（可复现否/有无 Phase-1 红/行为错还是需求不明），烤完必须落 B 或 D，禁连烤。
 
@@ -110,7 +116,7 @@ tdd 吞缝之前先问一句"缝的位置和接口形状定了吗"——没定�
 
 ## 编排铁律：user-invoked 不互调（V2.010，官方原文）
 
-官方规则：user-invoked skill 只编排，可调 model-invoked，但永远不调另一个 user-invoked。driver 自己是编排者，调谁都行；但被调的 user-invoked skill（to-spec、to-tickets、implement、grill-with-docs、wayfinder、triage 等）不许再调另一个 user-invoked——to-spec 里不许调 implement，implement 里不许调 code-review（implement 正文的"/tdd…/code-review"指运行其纪律，不是调其 skill）。model-invoked（tdd、code-review、diagnosing-bugs、prototype、research、codebase-design、`grilling`、`domain-modeling` 等）可由任何人调——其中裸 `grilling` 与 `domain-modeling` consult 中途任何上下文可调；`grill-me`/`grill-with-docs` 是 user-invoked（正身 `disable-model-invocation: true`），中途禁调（见中途 grill 专节 V2.018）。违反 = malformed。
+官方规则：user-invoked skill 只编排，可调 model-invoked，但永远不调另一个 user-invoked。driver 自己是编排者，调谁都行；但被调的 user-invoked skill（to-spec、to-tickets、implement、implement-spec、grill-with-docs、wayfinder、triage 等）不许再调另一个 user-invoked——to-spec 里不许调 implement，implement 里不许调 code-review（implement 正文的"/tdd…/code-review"指运行其纪律，不是调其 skill）。model-invoked（tdd、code-review、diagnosing-bugs、prototype、research、codebase-design、`grilling`、`domain-modeling` 等）可由任何人调——其中裸 `grilling` 与 `domain-modeling` consult 中途任何上下文可调；`grill-me`/`grill-with-docs` 是 user-invoked（正身 `disable-model-invocation: true`），中途禁调（见中途 grill 专节 V2.018）。违反 = malformed。
 
 ## 长任务 spec 演进位：冻结基线 + issues 增量（V2.009）
 

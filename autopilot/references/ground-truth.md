@@ -6,12 +6,12 @@
 
 1. `AGENTS.md` / `CLAUDE.md` + `docs/agents/*.md` — tracker, labels, domain
    layout. If absent, default to local-markdown (`.scratch/<slug>/`,
-   `spec.md`, `issues/NN-<slug>.md`) + single-context (`CONTEXT.md` +
+   `spec.md`, `issues/NN-<slug>.md`) + single-context (`GLOSSARY.md` +
    `docs/adr/`).
 2. `README.md` / `CONTRIBUTING.md` / `CODING_STANDARDS.md` — run, verify, and
    style commands. The verify command found here becomes the lane gate.
-3. `CONTEXT.md` (+ `CONTEXT-MAP.md`) + `docs/adr/` — vocabulary; use its
-   terms, respect decisions, flag contradictions. If `CONTEXT.md` is missing,
+3. `GLOSSARY.md` (+ `GLOSSARY-MAP.md`) + `docs/adr/` — vocabulary; use its
+   terms, respect decisions, flag contradictions. If `GLOSSARY.md` is missing,
    do NOT create it eagerly: park new terms in the spec's Glossary section and
    only call `domain-modeling` for genuinely irreversible vocabulary.
 4. Domain red-lines before any value/content change (numbers doc, data-vs-code
