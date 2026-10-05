@@ -6,6 +6,51 @@ Single version scheme: `V2.00N`. (Early private iterations used internal vNN
 numbers — v41=V2.001, v43=V2.002, v44=V2.003, v45=V2.004, v46=V2.005,
 v47=V2.006, v48=V2.007, v49=V2.008. Retired as of V2.008.)
 
+> Note: the public build ships no central logbook or self-upgrade loop (the
+> author's private evolution mechanism); see README. Rows below summarize each
+> version; entries mentioning logs describe the private build at that time.
+
+**V2.022** — Gate trust: no-subagent review endorsement, gates with red
+baselines on real data and abstaining shadows, brief-and-audit quota.
+
+**V2.021** — Upstream alignment: 25→27 sub-skills (added
+implement-spec/pr/retro, dropped resolving-merge-conflicts), CONTEXT renamed
+GLOSSARY.
+
+**V2.020** — Trigger audit: roll-call trace check, file-state counting,
+evidence-to-repo / log-to-logbook.
+
+**V2.019** — Load discipline: roll-call invocation, per-lane reading,
+single-round marker exemption.
+
+**V2.018** — Continuous grilling: frontier-empty opening, six mid-lane hard
+gates, bare grilling only mid-lane.
+
+**V2.017** — Evidence discipline: receipt reconciliation, single benchmark
+source, calibrated thresholds, control experiments.
+
+**V2.016** — Round boundaries: understanding without edits, freshness
+heartbeat, version self-check.
+
+**V2.015** — Logbook diet + T0 truth: watermark-tail reads, ask-matt is a map
+not a judge.
+
+**V2.014** — Rename mattpocock-skills → autopilot (zero rule changes).
+
+**V2.013** — Version handoff packet for cross-harness moves.
+
+**V2.012** — Author alignment: grill→prototype exit, full triage suite, frozen
+specs.
+
+**V2.011** — Destructive guard: file-level red-phase backup, negative
+evidence, marker counters.
+
+**V2.010** — Official alignment: setup state bit, grill steering, prototype
+gate, orchestration iron rule.
+
+**V2.009** — Long-task hardening: frozen spec baseline, four closing audits,
+tdd-n/a marking, steady heartbeat.
+
 **V2.008** — Field distillation from 20 task entries + 3 driver reflections.
 Self-scan checklist extended (green-lock question after red→green; forced
 slowdown after 3 consecutive failures; same-file regression smoke; design-fork

@@ -2,9 +2,9 @@
 
 # autopilot
 
-**点一次，说句人话，剩下的全自动。** 一个包着 [mattpocock/skills](https://github.com/mattpocock/skills) 工作流（25 个子 skill）的全自动 driver：用户说一句日常人话（中英文都行），它就把整个任务自己做完——分流、打磨、写 spec、拆票、实现、红绿测试、双轴评审、验证交付，中途不需要人参与。
+**点一次，说句人话，剩下的全自动。** 一个包着 [mattpocock/skills](https://github.com/mattpocock/skills) 工作流（27 个子 skill）的全自动 driver：用户说一句日常人话（中英文都行），它就把整个任务自己做完——分流、打磨、写 spec、拆票、实现、红绿测试、双轴评审、验证交付，中途不需要人参与。
 
-> **给谁用的**：想用这套工作流、但不会用的人。你不需要认识 25 个子 skill，也不需要知道什么时候该调谁——你只需要调这一个 skill，它会在需要时自动调用工作流里的 skill，新手直接用就行。
+> **给谁用的**：想用这套工作流、但不会用的人。你不需要认识 27 个子 skill，也不需要知道什么时候该调谁——你只需要调这一个 skill，它会在需要时自动调用工作流里的 skill，新手直接用就行。
 
 ## 为什么需要它
 
@@ -22,17 +22,17 @@
 >
 > ```
 > 帮我装一下这个 skill：https://github.com/zkkk9555/autopilot-skill
-> 要求：driver（autopilot）+ 上游 25 个工作流 skill 共 26 个必需项，一个不能少；
+> 要求：driver（autopilot）+ 上游 27 个工作流 skill 共 28 个必需项，一个不能少；
 > 装到当前 harness 的用户级 skills 目录；上游新增的 skill 照单全收；
-> 装完逐个确认这 26 个都在：autopilot, ask-matt, code-review, codebase-design, diagnosing-bugs, domain-modeling, grill-me, grill-with-docs, grilling, handoff, implement, improve-codebase-architecture, prototype, research, resolving-merge-conflicts, setup-matt-pocock-skills, tdd, teach, to-questionnaire, to-spec, to-tickets, triage, wait-what, wayfinder, wizard, writing-for-agents；缺哪个、装到哪了，告诉我。
+> 装完逐个确认这 28 个都在：autopilot, ask-matt, code-review, codebase-design, diagnosing-bugs, domain-modeling, grill-me, grill-with-docs, grilling, handoff, implement, implement-spec, improve-codebase-architecture, pr, prototype, research, retro, setup-matt-pocock-skills, tdd, teach, to-questionnaire, to-spec, to-tickets, triage, wait-what, wayfinder, wizard, writing-for-agents；缺哪个、装到哪了，告诉我。
 > ```
 >
-> 上面这段话已实测通过（干净 Agent 只凭链接装出 26/26）。下面是给想自己动手的进阶内容，看不懂直接跳过。
+> 上面这段话发给 Agent 即可安装。下面是给想自己动手的进阶内容，看不懂直接跳过。
 
 <details>
 <summary>进阶：前置说明与一键命令</summary>
 
-本 driver 是指挥官，真正干活的是上游 25 个工作流 skill（[mattpocock/skills](https://github.com/mattpocock/skills)）。必须连上游一起装（driver + 上游 25 个核心共 26 个必需，上游新增照单全收，少必需项才是残的）；只装 driver 也能跑（内置速记版兜底），但过程纪律会打折。
+本 driver 是指挥官，真正干活的是上游 27 个工作流 skill（[mattpocock/skills](https://github.com/mattpocock/skills)）。必须连上游一起装（driver + 上游 27 个核心共 28 个必需，上游新增照单全收，少必需项才是残的）；只装 driver 也能跑（内置速记版兜底），但过程纪律会打折。
 
 bash（macOS / Linux / Git Bash）：
 
@@ -55,7 +55,7 @@ Windows PowerShell（若报执行策略错误，先跑 `Set-ExecutionPolicy -Sco
 
 - `npx skills`（备选）：`npx skills@latest add zkkk9555/autopilot-skill -g -a zcode -y`（`-a` 换 claude-code|codex|cursor），再 `npx skills@latest add mattpocock/skills -g -a zcode --skill '*' -y` 装上游。注意它按 harness 分目录装。
 - Claude Code 插件市场：`/plugin marketplace add zkkk9555/autopilot-skill` 后 `/plugin install autopilot`。
-- 手动（未知 harness）：找你的 skills 目录 → clone 两仓库 → `autopilot/` 拷过去，上游 `skills/*/*/` 按最后一级目录名装平 → 验证 26 个 → 重启说“切换按钮失效了，去检查修一下”。
+- 手动（未知 harness）：找你的 skills 目录 → clone 两仓库 → `autopilot/` 拷过去，上游 `skills/*/*/` 按最后一级目录名装平 → 验证 28 个 → 重启说“切换按钮失效了，去检查修一下”。
 - 目录对照：`~/.agents/skills/`（ZCode/Cursor/OpenCode 等）|`~/.zcode/skills/`（ZCode）|`~/.claude/skills/`（Claude Code）|`~/.codex/skills/`（Codex）|`<项目>/.agents/skills/`（仅当前项目）。没有任何目录是全宇宙通用的，装完必须确认。
 
 </details>

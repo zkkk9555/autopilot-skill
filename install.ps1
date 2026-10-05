@@ -16,7 +16,7 @@ $ErrorActionPreference = 'Stop'
 
 $PubUrl = 'https://github.com/zkkk9555/autopilot-skill'
 $UpstreamUrl = 'https://github.com/mattpocock/skills'
-$UpstreamNames = @('ask-matt','code-review','codebase-design','diagnosing-bugs','domain-modeling','grill-me','grill-with-docs','grilling','handoff','implement','improve-codebase-architecture','prototype','research','resolving-merge-conflicts','setup-matt-pocock-skills','tdd','teach','to-questionnaire','to-spec','to-tickets','triage','wait-what','wayfinder','wizard','writing-for-agents')
+$UpstreamNames = @('ask-matt','code-review','codebase-design','diagnosing-bugs','domain-modeling','grill-me','grill-with-docs','grilling','handoff','implement','implement-spec','improve-codebase-architecture','pr','prototype','research','retro','setup-matt-pocock-skills','tdd','teach','to-questionnaire','to-spec','to-tickets','triage','wait-what','wayfinder','wizard','writing-for-agents')
 
 function Harness-Dir($h) {
   switch ($h) {
@@ -94,7 +94,7 @@ try {
   tar -xzf "$Tmp\pub.tar.gz" -C $Tmp
   if (-not (Test-Path "$Tmp\autopilot-skill-main\autopilot\SKILL.md")) { throw 'driver payload broken' }
   if (-not $Slim) {
-    Write-Host '==> Downloading upstream 25 workflow skills'
+    Write-Host '==> Downloading upstream 27 workflow skills'
     $retry = 0; $ok = $false
     while (-not $ok -and $retry -lt 3) { try { Invoke-WebRequest "$UpstreamUrl/archive/refs/heads/main.tar.gz" -OutFile "$Tmp\up.tar.gz"; $ok = $true } catch { $retry++; if ($retry -ge 3) { throw } } }
     tar -xzf "$Tmp\up.tar.gz" -C $Tmp --exclude='skills-main/AGENTS.md'

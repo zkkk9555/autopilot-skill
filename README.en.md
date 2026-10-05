@@ -3,14 +3,14 @@ English | [简体中文](./README.md)
 # autopilot
 
 **One invocation, full autopilot.** A driver skill wrapping the
-[mattpocock/skills](https://github.com/mattpocock/skills) workflow (25
+[mattpocock/skills](https://github.com/mattpocock/skills) workflow (27
 sub-skills): one plain-language request — in English or Chinese — turns into a
 complete, verified, delivered task. Routing, sharpening, spec, tickets,
 implementation, red-green testing, two-axis review, verified delivery, all
 driven by the skill itself with no mid-task questions.
 
 > **Who this is for**: people who want the workflow but don't know how to use
-> it. You don't need to know the 25 sub-skills or when to invoke which — just
+> it. You don't need to know the 27 sub-skills or when to invoke which — just
 > invoke this one skill and it calls the workflow skills automatically when
 > needed. Beginner-friendly by design.
 
@@ -37,22 +37,22 @@ discipline" into "quality by process":
 >
 > ```
 > Install this skill: https://github.com/zkkk9555/autopilot-skill
-> Requirements: driver (autopilot) + 25 upstream workflow skills, 26 required
+> Requirements: driver (autopilot) + 27 upstream workflow skills, 28 required
 > items total, none missing; install into the current harness
 > user-level skills
-> directory; take new upstream skills as they come; verify these 26 exist one
-> by one: autopilot, ask-matt, code-review, codebase-design, diagnosing-bugs, domain-modeling, grill-me, grill-with-docs, grilling, handoff, implement, improve-codebase-architecture, prototype, research, resolving-merge-conflicts, setup-matt-pocock-skills, tdd, teach, to-questionnaire, to-spec, to-tickets, triage, wait-what, wayfinder, wizard, writing-for-agents; report any missing and where they landed.
+> directory; take new upstream skills as they come; verify these 28 exist one
+> by one: autopilot, ask-matt, code-review, codebase-design, diagnosing-bugs, domain-modeling, grill-me, grill-with-docs, grilling, handoff, implement, implement-spec, improve-codebase-architecture, pr, prototype, research, retro, setup-matt-pocock-skills, tdd, teach, to-questionnaire, to-spec, to-tickets, triage, wait-what, wayfinder, wizard, writing-for-agents; report any missing and where they landed.
 > ```
 >
-> This prompt is link-drop tested (clean agent installed 26/26 from the link
-> alone). Advanced options below — skip if the prompt worked.
+> Send the prompt above to your agent to install. Advanced options below —
+> skip if the prompt worked.
 
 <details>
 <summary>Advanced: one-command + variants</summary>
 
-The driver is the commander; the 25 upstream workflow skills
+The driver is the commander; the 27 upstream workflow skills
 ([mattpocock/skills](https://github.com/mattpocock/skills)) do the work —
-install all 26 together. Driver-only runs on built-in speed notes with weaker
+install all 28 together. Driver-only runs on built-in speed notes with weaker
 discipline.
 
 bash (macOS / Linux / Git Bash):
@@ -86,7 +86,7 @@ zcode|all), `--dry-run`, `--slim`, `--dir`, `--uninstall`.
   then `/plugin install autopilot`.
 - Manual (unknown harness): find your skills dir → clone both repos → driver
   `autopilot/` over, upstream `skills/*/*/` flattened by last segment →
-  verify 26+ → restart and say "The sidebar toggle stopped working — check
+  verify 28+ → restart and say "The sidebar toggle stopped working — check
   and fix it."
 - Directory map: `~/.agents/skills/` (ZCode/Cursor/OpenCode…)
   | `~/.zcode/skills/` (ZCode) | `~/.claude/skills/` (Claude Code)

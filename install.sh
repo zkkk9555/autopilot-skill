@@ -13,8 +13,8 @@ set -euo pipefail
 
 PUB_URL="https://github.com/zkkk9555/autopilot-skill"
 UPSTREAM_URL="https://github.com/mattpocock/skills"
-# 25 upstream names, hardcoded manifest for count verification
-UPSTREAM_NAMES="ask-matt code-review codebase-design diagnosing-bugs domain-modeling grill-me grill-with-docs grilling handoff implement improve-codebase-architecture prototype research resolving-merge-conflicts setup-matt-pocock-skills tdd teach to-questionnaire to-spec to-tickets triage wait-what wayfinder wizard writing-for-agents"
+# 27 upstream names, hardcoded manifest for count verification
+UPSTREAM_NAMES="ask-matt code-review codebase-design diagnosing-bugs domain-modeling grill-me grill-with-docs grilling handoff implement implement-spec improve-codebase-architecture pr prototype research retro setup-matt-pocock-skills tdd teach to-questionnaire to-spec to-tickets triage wait-what wayfinder wizard writing-for-agents"
 
 HARNESS="auto"; DIR=""; SLIM=0; DRY=0; UNINST=0; YES=0
 while [ $# -gt 0 ]; do
@@ -129,7 +129,7 @@ fetch "$PUB_URL/archive/refs/heads/main.tar.gz" "$TMP/pub.tar.gz"
 tar -xzf "$TMP/pub.tar.gz" -C "$TMP"
 [ -f "$TMP/autopilot-skill-main/autopilot/SKILL.md" ] || { echo "ERROR: driver payload broken"; exit 1; }
 if [ "$SLIM" != 1 ]; then
-  echo "==> Downloading upstream 25 workflow skills ($UPSTREAM_URL)"
+  echo "==> Downloading upstream 27 workflow skills ($UPSTREAM_URL)"
   fetch "$UPSTREAM_URL/archive/refs/heads/main.tar.gz" "$TMP/up.tar.gz"
   tar -xzf "$TMP/up.tar.gz" -C "$TMP" --exclude='skills-main/AGENTS.md' || echo "!! extract warnings, continuing + verifying below"
 fi
