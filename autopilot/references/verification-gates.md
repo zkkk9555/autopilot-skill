@@ -89,6 +89,26 @@
   DRIVER-PROPOSAL.md, local log pointers) are chore: add/remove without
   bumping the project version, never as a standalone versioned commit — ride
   along with the next real commit or a plain chore commit per repo rules.
+- **Gate-credibility (V2.022).** A gate nobody checked is a costume: every new
+  gate ships with (1) a red-baseline — feed it a known defect, it MUST go red;
+  self-check baselines are auto-found by defect signature in history, never a
+  hard-coded commit (a HEAD baseline is green forever); (2) real-data
+  injection — hand-made fixtures cannot catch real shape drift (D14's scanner
+  idled since the V2 port); (3) both assertion kinds — "must-have" AND
+  "must-not-miss" (count + sequence continuity: two writers halving the work
+  still adds up). Shadow judges (self-checkers, fixtures, in-gate fixtures,
+  injected alert text) MUST read the master's product fields, never recompute;
+  on missing fields they abstain, and abstention is never reported as clean.
+  When a gate misbehaves, first ask who owns the signal and land the final
+  resolved value in the ledger — not "is the threshold right". Forward and
+  reverse gates MUST call the same predicate function; the reverse gate only
+  swaps inputs (re-writing the predicate re-proves nothing — four inverted
+  assertions in one round). Review always asks one fixed question: was every
+  new comment and gate calibrated against the measured object. Gates that
+  depend on external state (process / deploy / route / config) MUST verify
+  from the outside in their done-criteria (`version===runtimeVersion` before
+  a pressure round); known blind spots are written down, never pretended
+  covered.
 
 ## 8. Destructive-guard (V2.011)
 

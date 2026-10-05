@@ -25,8 +25,8 @@ friction for the next upgrade without self-modifying: `references/usage-log.md`
 in `CHANGELOG.md`; rule details live in `references/` (§0–§5 split files).
 
 
-**V2.021: upstream-alignment (27 skills, GLOSSARY rename, 3-in-1-out routing).**
-Same V2.020 behaviour, plus: trigger table drops `resolving-merge-conflicts` and routes `implement-spec`/`pr`/`retro`; all live `CONTEXT.md` refs become `GLOSSARY.md` (archive blocks stay verbatim, superseded by this version); `disable-model-invocation` count re-audited 16/27. Detail in
+**V2.022: gate-trust (review without subagents, credible gates, brief-and-audit quota).**
+Same V2.021 behaviour, plus: no-subagent harness gets a full dual-axis self-review endorsement (not single-axis); every new gate must pass its own red-baseline on real data, shadows read the master's product fields and abstain loudly; parallel briefs carry export lists and every round audits its own gates. Detail in
 `references/`.
 
 ## Trigger table (one line per skill; fire at its moment, no human prompt)
