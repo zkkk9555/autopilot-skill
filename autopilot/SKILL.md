@@ -25,8 +25,8 @@ files; this build ships no logbook or self-upgrade loop). Version notes v10–v4
 in `CHANGELOG.md`; rule details live in `references/` (§0–§5 split files).
 
 
-**V2.022: gate-trust (review without subagents, credible gates, brief-and-audit quota).**
-Same V2.021 behaviour, plus: no-subagent harness gets a full dual-axis self-review endorsement (not single-axis); every new gate must pass its own red-baseline on real data, shadows read the master's product fields and abstain loudly; parallel briefs carry export lists and every round audits its own gates. Detail in
+**V2.023: enforcement-trust (hard-trace invocation, lane-entry gates, verdict-trust).**
+Same V2.022 behaviour, plus: Skill-call hard trace + lane-entry checklists + STOP precheck; gates need real-data + independent-implementation verdicts, no swallowing failures, anchors pass mutants. Detail in
 `references/`.
 
 ## Trigger table (one line per skill; fire at its moment, no human prompt)

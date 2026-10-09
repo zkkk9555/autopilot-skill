@@ -18,9 +18,9 @@
 
 ## 执行形态与收尾：implement-spec / pr / retro（V2.021，上游转正跟进）
 
-- **`implement-spec`** — 入口：票图已成、frontier 有 ≥2 可并行、要落在单一集成分支（Lane C 执行轮）。产物：集成分支 + 每票按 tracker 规则关闭 + 集成后一次 `code-review`。单票/逐票亲驾仍走 `implement`（fresh context per ticket）。选错形态（该并行的逐票串行拖死、该单票的起重型集成）= deviation。编排：`implement-spec` 是 user-invoked，driver 可调；其内只许调 model-invoked（`tdd`、`code-review`），不许再调 user-invoked（见编排铁律）。
-- **`pr`** — 入口：要开 PR（含 `implement-spec` 的 draft PR）。产物：PR 正文按上游模板（最小可视化 + before/after 证据 + 单/双向门 + blast radius），用 `GLOSSARY.md` 词汇。PR 正文缺证据或缺门判断 = malformed。`pr` 是 model-invoked，任何上下文可调。
-- **`retro`** — 入口：一次构建收尾，尤其跑偏之后（P0/返工/整轮作废）。产物：环境候选（导航/检查/规范/steering/工具），按严重度摆给用户，不直接改代码。跑法：本会话 clear 之前在当会话跑；clear 之后凭该会话记录回看。跑偏构建无复盘 = malformed。
+- **`implement-spec`** — 入口：票图已成、frontier 有 ≥2 可并行、要落在单一集成分支（Lane C 执行轮）。产物：集成分支 + 每票按 tracker 规则关闭 + 集成后一次 `code-review`。产物另含探索记录＋清理证据（worktree list空）＋单整合PR；顺序锁死全完→code-review→PR，无review直PR = malformed。单票/逐票亲驾仍走 `implement`（fresh context per ticket）。选错形态（该并行的逐票串行拖死、该单票的起重型集成）= deviation。编排：`implement-spec` 是 user-invoked，driver 可调；其内只许调 model-invoked（`tdd`、`code-review`），不许再调 user-invoked（见编排铁律）。
+- **`pr`** — 入口：要开 PR（含 `implement-spec` 的 draft PR）。产物：PR 正文按上游模板（最小可视化 + before/after 证据 + 单/双向门 + blast radius），用 `GLOSSARY.md` 词汇。Evidence必须真跑before/after（测试输出/截图/数据），口头不算；Blast Radius独立写一行。PR 正文缺证据或缺门判断 = malformed。pr永不替代code-review，仅有pr无review即malformed。`pr` 是 model-invoked，任何上下文可调。
+- **`retro`** — 入口：一次构建收尾，尤其跑偏之后（P0/返工/整轮作废）。产物：环境候选（导航/检查/规范/steering/工具），按上游7分类（导航/检查/规范/AGENTS/工具经济/no-ops/信息）＋token证据摆给用户，不直接改代码；修走STOP禁auto-fix。跑法：本会话 clear 之前在当会话跑；clear 之后凭该会话记录回看。跑偏构建无复盘 = malformed。
 
 ## 剩下 19 个的四问模板
 
@@ -62,6 +62,8 @@ Lane E（raw pile）进 lane 前先走 triage 状态机，不是直接开干：
 子 skill 已安装 → 动手前必须先经 Skill 工具加载它（哪怕它只返回文档正文），然后按其正文 inline 代执行——这叫代执行，合法。`references/` 里的速记版 fallback 只允许在对应 skill 未安装时使用。既没调 Skill 工具、也没读正身就干活 = malformed，JOURNAL 必记 deviation（未加载正身）。已装与否以本机技能目录实测为准（`<your local skills directory>\`），不靠记忆。
 
 **开工点名（V2.019，连续 5 轮未加载正身换来）：** 动手前在 trace/NOTES 写一行本轮要调的正身清单（例：`正身清单：diagnosing-bugs、tdd、code-review`），然后逐一经 Skill 工具调用；代执行仍先加载再 inline。清单缺一项、或清单有点名但无对应调用痕 = deviation（自觉守不住的，点名替自觉）。**收尾调用痕自查（V2.020，点名只管写不管调换来）：** 收尾前 grep JOURNAL `Skills called` 行（无 JOURNAL 仓看 NOTES 顶部同名行），清单每项须有对应调用痕；有点名无调用痕 = deviation 当轮补记（v1.182–v1.184 code-review 连犯 3 轮换来）。
+
+**正身硬痕（V2.023，读=调混淆终结）：** 点名清单每项须有Skill工具调用痕＋返回摘要引用（正身版本/行或返回要点一句）；inline代执行须先有调用痕＋注substitution＋正身行号，无痕inline = malformed。收尾从grep JOURNAL文本升为调用痕＋产物双验：清单每项须同时有调用痕与对应产物（spec/ticket/红绿输出/review结论），缺一 = deviation当轮补记。
 
 ## research 硬入口（V2.006 立项，V2.010 量化）
 

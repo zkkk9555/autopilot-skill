@@ -79,6 +79,8 @@ out partial, the follow-up takes the NEXT number and cites the earlier one
 ("补账 iter121" → iter122), never rewrites the committed entry's meaning.
 Before committing, grep JOURNAL for the number: exactly one entry.
 
+**STOP前置（V2.023）：** 开工前过irreversible/numeric/shield checklist（Irreversible list＋numeric红线＋prelane shield关键词），有命中无NEEDS-HUMAN.md = malformed。各lane无产物不得收尾：B spec+slices+verify、C map+单PR、D NOTES+Phase-1红绿+回归、A provenance+per-class门；缺产物收尾 = malformed。
+
 STOP and write `.scratch/<slug>/NEEDS-HUMAN.md`, then end the turn, when:
 
 - The step deletes data, rewrites published history, publishes/deploys

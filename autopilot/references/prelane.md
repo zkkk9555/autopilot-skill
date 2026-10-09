@@ -81,3 +81,5 @@ with `Anchors: path :: symbol` + verify command? ② Any cross-system change,
 new mechanism, or undecided numbers? ③ Multiple turns/sessions? ② or ③ =
 Yes, or ① unwritable → **C**. A session = one window, one goal.
 
+**入口硬门（V2.023，空指针终结）：** 开工前NOTES顶写三件：本lane必读集已读（file:块名）＋shield关键词grep结论＋Gate 0 file:line + parity证据；缺一件不得进lane，缺 = malformed。downshift收紧：免的是T0调用，不是分流判定——每轮仍须Gate 0 verdict＋lane落子quote，无quote = malformed。
+

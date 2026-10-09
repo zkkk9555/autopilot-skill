@@ -22,7 +22,7 @@
 
 Bootstrap reads the full set (§0–§5 split files per SKILL.md). Lane work then
 confirms its list before acting; unlisted files stay closed unless the round's
-evidence forces them open (record the reason in NOTES):
+evidence forces them open (record the reason in NOTES). 确认须留痕（已读 file:块名），无痕开工 = malformed。
 
 - **Lane B** — `core-triggers.md` (8 core + grill), `feature-flow.md`,
   `self-answer.md` (STOP list), `verification-gates.md` (red-green + review),

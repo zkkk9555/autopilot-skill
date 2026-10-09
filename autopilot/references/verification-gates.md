@@ -110,6 +110,8 @@
   a pressure round); known blind spots are written down, never pretended
   covered.
 
+**Verdict-trust (V2.023).** (1)收紧/放宽判据须真数据跑一遍＋独立实现对照一致，反向门自洽≠正确（v1.237/238同族）。(2)吞错禁令：批量mv/cp禁2>/dev/null||true吞错；报告数须独立重数文件系统核对；catch/重试须先报告失败因（v1.239/243/244）。(3)锚与不可判：源码扫描锚须过变异体（注释敏感即锚错）；不可判须活到输出，选下游grep最安全形（?/NA），0禁冒充无（门15/门14第3例）。
+
 ## 8. Destructive-guard (V2.011)
 
 Paid for by a real production accident (24 local versions lost when a
