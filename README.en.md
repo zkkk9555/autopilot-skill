@@ -107,13 +107,6 @@ small features → sharpen → spec → red-green → two-axis review; foggy pro
 → interview → map → staged stops. It only stops for destructive,
 externally-visible, or scope-changing decisions.
 
-## No logbook in the public build
-
-The central logbook + scheduled reflection + skill-creator upgrade loop is the
-author's private-evolution mechanism and is not shipped in the public build.
-The public driver records rule friction in the round's trace only — no logs,
-no upgrades. Feedback goes through Issues / Pull Requests below.
-
 ## Status & contributing
 
 > This skill is in **early development** — trigger timing may be off and
