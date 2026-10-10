@@ -6,10 +6,6 @@ Single version scheme: `V2.00N`. (Early private iterations used internal vNN
 numbers — v41=V2.001, v43=V2.002, v44=V2.003, v45=V2.004, v46=V2.005,
 v47=V2.006, v48=V2.007, v49=V2.008. Retired as of V2.008.)
 
-> Note: the public build ships no central logbook or self-upgrade loop (the
-> author's private evolution mechanism); see README. Rows below summarize each
-> version; entries mentioning logs describe the private build at that time.
-
 **V2.022** — Gate trust: no-subagent review endorsement, gates with red
 baselines on real data and abstaining shadows, brief-and-audit quota.
 
